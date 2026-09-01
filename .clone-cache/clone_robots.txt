@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OCEANORA &mdash; Luxury Coastal Estates</title>
+
+  <!-- Google Fonts for Luxury Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css?v=3" />
+</head>
+<body>
+
+  <!-- Loading Overlay -->
+  <div id="loader" class="loader-container">
+    <div class="loader-bar-bg">
+      <div id="loader-bar" class="loader-bar"></div>
+    </div>
+  </div>
+
+  <!-- Scroll Container to provide height for scroll animation -->
+  <div id="scroll-container"></div>
+
+  <!-- Fixed Fullscreen Background Canvas -->
+  <canvas id="canvas"></canvas>
+
+  <!-- Background Overlay for Contrast & Text Legibility -->
+  <div id="bg-overlay" class="canvas-overlay"></div>
+
+  <!-- Fullscreen Glassmorphic Navigation Menu Drawer -->
+  <div id="nav-drawer" class="nav-drawer">
+    <div class="nav-drawer-backdrop" id="nav-backdrop"></div>
+    <div class="nav-drawer-content">
+      <div class="nav-drawer-header">
+        <div class="logo">
+          <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M2 12c3-3 6-3 9 0s6 3 9 0" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M2 7c3-3 6-3 9 0s6 3 9 0" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M2 17c3-3 6-3 9 0s6 3 9 0" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          <span class="logo-text">OCEANORA</span>
+        </div>
+        <button id="nav-close-btn" class="nav-close-btn" aria-label="Close Menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="nav-drawer-body">
+        <div class="nav-main-links">
+          <a href="index.html" class="nav-link active"><span class="link-num">01</span><span>Home</span></a>
+          <a href="about.html" class="nav-link"><span class="link-num">02</span><span>About Us</span></a>
+          <a href="#villa-ui" class="nav-link nav-scroll-link" data-scroll="0.28"><span class="link-num">03</span><span>Residences</span></a>
+          <a href="#agent-ui" class="nav-link nav-scroll-link" data-scroll="0.60"><span class="link-num">04</span><span>Meet Martin</span></a>
+          <a href="#footer-ui" class="nav-link nav-scroll-link" data-scroll="0.96"><span class="link-num">05</span><span>Contact Us</span></a>
+        </div>
+      </div>
+
+      <div class="nav-drawer-footer">
+        <div class="nav-footer-label">LUXURY CONCIERGE</div>
+        <div class="nav-footer-val">+55 21 0000-0000</div>
+        <div class="nav-footer-val">concierge@oceanora.com</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top Navigation Header -->
+  <header class="header">
+    <div class="logo">
+      <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path d="M2 12c3-3 6-3 9 0s6 3 9 0" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M2 7c3-3 6-3 9 0s6 3 9 0" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M2 17c3-3 6-3 9 0s6 3 9 0" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+      <span class="logo-text">OCEANORA</span>
+    </div>
+
+    <button id="menu-btn" class="menu-btn" aria-label="Toggle Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <!-- Hero Section UI -->
+  <div id="hero-ui" class="hero-container">
+    <div class="hero-body">
+      <!-- Left Column: Typography & Description -->
+      <div class="hero-left">
+        <div class="subtitle-badge">LUXURY SCUBA & COASTAL ESTATES</div>
+        <div class="pre-title">D E S C U B R A</div>
+        <h1 class="main-title">
+          <span class="highlight">L</span>uxury
+        </h1>
+        <div class="sub-date">2 2 &bull; D E &bull; A B R I L</div>
+
+        <div class="description-block">
+          <div class="vertical-line"></div>
+          <p class="description-text">
+            O COMEÇO DE UMA NOVA ERA EM<br />
+            SOLO <span class="highlight-text">BRASILEIRO.</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Right Column: Center-Right CTA Buttons -->
+      <div class="hero-right">
+        <div class="cta-group">
+          <a href="#explore" class="btn btn-primary">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M2 12c3-3 6-3 9 0s6 3 9 0" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <span>Explore Trips</span>
+            <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M5 12h14M12 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+
+          <button class="btn btn-secondary">
+            <div class="play-icon-circle">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+            <span>Watch Film</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Bottom Bar -->
+    <div class="hero-footer">
+      <div class="social-links">
+        <a href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
+          </svg>
+        </a>
+        <span class="social-tag">/ OCEANORA</span>
+      </div>
+
+      <div class="contact-pill">
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="gold-icon">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          <span>+55 21 0000-0000</span>
+        </div>
+        <div class="pill-divider"></div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="gold-icon">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          <span>RUA DAS ONDAS, 210<br/>RIO DE JANEIRO, RJ</span>
+        </div>
+      </div>
+
+      <div class="scroll-indicator">
+        <div class="scroll-line"></div>
+        <span class="scroll-text">SCROLL TO EXPLORE</span>
+        <div class="scroll-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 5v14M19 12l-7 7-7-7"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 2: Villa Showcase UI (Reveals on scroll at sequence end) -->
+  <div id="villa-ui" class="villa-container">
+    <!-- Giant Watermark Title -->
+    <div class="watermark-title">OCEANORA</div>
+
+    <div class="villa-body">
+      <!-- Left Content Column -->
+      <div class="villa-left">
+        <div class="subtitle-badge">CLIFFSIDE LUXURY</div>
+        <h2 class="villa-heading">
+          Where Elegance<br />
+          Meets the Ocean
+        </h2>
+        <p class="villa-desc">
+          A rare collection of oceanfront residences crafted for those who value timeless design and exceptional living.
+        </p>
+
+        <div class="villa-cta-group">
+          <a href="#residences" class="btn-pill-white">
+            <span>View Residences</span>
+            <div class="arrow-circle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M7 17L17 7M17 7H7M17 7V17" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </a>
+
+          <button class="btn-pill-glass">
+            <div class="play-icon-circle-small">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+            <span>Watch Video</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Right Column: Floating Glassmorphic Feature Cards -->
+      <div class="villa-right">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+          </div>
+          <div class="feature-info">
+            <h3>Panoramic Views</h3>
+            <p>Uninterrupted ocean and sunset views.</p>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+          </div>
+          <div class="feature-info">
+            <h3>World Class Design</h3>
+            <p>Award-winning architecture and interiors.</p>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+            </svg>
+          </div>
+          <div class="feature-info">
+            <h3>Concierge Service</h3>
+            <p>Bespoke services for effortless living.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Stats Pill Bar -->
+    <div class="stats-pill-bar">
+      <div class="stat-col">
+        <span class="stat-number">12+</span>
+        <span class="stat-label">Exclusive Residences</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-col">
+        <span class="stat-number">30,000+</span>
+        <span class="stat-label">Sq. Ft. Of Living Space</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-col">
+        <span class="stat-number">180°</span>
+        <span class="stat-label">Oceanfront Views</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-col">
+        <span class="stat-number">24/7</span>
+        <span class="stat-label">Private Concierge</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 3: Meet Your Agent (Martin) UI (Reveals on scroll after Villa section) -->
+  <div id="agent-ui" class="agent-container">
+    <!-- Top Header: Agent Profile Block & Circular Portrait Image -->
+    <div class="agent-header">
+      <div class="agent-header-left">
+        <div class="subtitle-badge">MEET YOUR AGENT</div>
+        <h2 class="agent-name">Martin</h2>
+        <div class="agent-gold-line"></div>
+        <p class="agent-title">Luxury Real Estate Specialist</p>
+
+        <div class="agent-socials">
+          <a href="#" aria-label="Facebook" class="agent-social-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="Instagram" class="agent-social-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="LinkedIn" class="agent-social-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Agent Circular Avatar Portrait -->
+      <div class="agent-avatar-wrapper">
+        <div class="agent-avatar-ring">
+          <img src="martin_agent.png" alt="Martin - Luxury Real Estate Specialist" class="agent-avatar-img" />
+        </div>
+        <div class="agent-status-badge">
+          <span class="status-dot"></span>
+          <span>Top Producer 2026</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Section: 4 Featured Property Cards Grid -->
+    <div class="agent-properties-grid">
+      <!-- Card 01 -->
+      <div class="property-card">
+        <div class="property-card-bg" style="background-image: url('property_cliffside.png');"></div>
+        <div class="property-card-overlay"></div>
+        <div class="property-badge">01</div>
+        <div class="property-content">
+          <h3 class="property-title">Cliffside Estate</h3>
+          <p class="property-location">Malibu, California</p>
+          <div class="property-actions">
+            <a href="#" aria-label="Share Facebook" class="prop-social-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="Share Instagram" class="prop-social-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 02 -->
+      <div class="property-card">
+        <div class="property-card-bg" style="background-image: url('property_oceanview.png');"></div>
+        <div class="property-card-overlay"></div>
+        <div class="property-badge">02</div>
+        <div class="property-content">
+          <h3 class="property-title">Oceanview Villa</h3>
+          <p class="property-location">Miami, Florida</p>
+          <div class="property-actions">
+            <a href="#" aria-label="Share Facebook" class="prop-social-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="Share Instagram" class="prop-social-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 03 -->
+      <div class="property-card">
+        <div class="property-card-bg" style="background-image: url('property_hillside.png');"></div>
+        <div class="property-card-overlay"></div>
+        <div class="property-badge">03</div>
+        <div class="property-content">
+          <h3 class="property-title">Hillside Mansion</h3>
+          <p class="property-location">Beverly Hills, California</p>
+          <div class="property-actions">
+            <a href="#" aria-label="Share Facebook" class="prop-social-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="Share Instagram" class="prop-social-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 04 -->
+      <div class="property-card">
+        <div class="property-card-bg" style="background-image: url('property_waterfront.png');"></div>
+        <div class="property-card-overlay"></div>
+        <div class="property-badge">04</div>
+        <div class="property-content">
+          <h3 class="property-title">Waterfront Residence</h3>
+          <p class="property-location">Palm Beach, Florida</p>
+          <div class="property-actions">
+            <a href="#" aria-label="Share Facebook" class="prop-social-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="Share Instagram" class="prop-social-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Center Footer CTA Pill -->
+    <div class="agent-footer">
+      <a href="#all-properties" class="btn-pill-gold-outline">
+        <span>View All Properties</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon">
+          <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Section 4: Site Footer UI (Matching Reference Design Image) -->
+  <footer id="footer-ui" class="site-footer">
+    <div class="footer-wrapper">
+      
+      <!-- Top Floating Glassmorphic Newsletter Card -->
+      <div class="footer-hero-card">
+        <!-- Left: Badge & Heading -->
+        <div class="footer-hero-left">
+          <div class="badge-with-line">
+            <span class="gold-accent-line"></span>
+            <span class="badge-text">STAY CONNECTED</span>
+          </div>
+          <h2 class="footer-hero-title">
+            Exceptional homes,<br />
+            extraordinary living.
+          </h2>
+        </div>
+
+        <!-- Middle: Description -->
+        <div class="footer-hero-mid">
+          <div class="footer-v-divider"></div>
+          <p class="footer-hero-desc">
+            Subscribe to receive exclusive property updates, luxury insights and off-market opportunities.
+          </p>
+        </div>
+
+        <!-- Right: Subscription Form -->
+        <div class="footer-hero-right">
+          <form class="subscribe-pill-form" onsubmit="event.preventDefault();">
+            <input type="email" placeholder="Enter your email" class="subscribe-pill-input" required />
+            <button type="submit" class="btn-subscribe-gold">
+              <span>Subscribe</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="arrow-icon">
+                <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </form>
+          <div class="privacy-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+            <span>We respect your privacy.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Main Footer Section -->
+      <div class="footer-main-body">
+        <!-- Col 1: Brand Column -->
+        <div class="footer-brand-col">
+          <div class="logo">
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M2 12c3-3 6-3 9 0s6 3 9 0" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M2 7c3-3 6-3 9 0s6 3 9 0" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M2 17c3-3 6-3 9 0s6 3 9 0" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+            <div class="brand-title-group">
+              <span class="logo-text-large">OCEANORA</span>
+              <span class="logo-subtext">LUXURY REAL ESTATE</span>
+            </div>
+          </div>
+          <div class="brand-gold-line"></div>
+          <p class="brand-desc">
+            Redefining luxury real estate through exceptional properties, world-class service and timeless experiences.
+          </p>
+
+          <div class="footer-social-icons">
+            <a href="#" aria-label="Facebook" class="social-circle-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="Instagram" class="social-circle-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="YouTube" class="social-circle-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="LinkedIn" class="social-circle-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect x="2" y="9" width="4" height="12"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Col 2: EXPLORE -->
+        <div class="footer-nav-col">
+          <h4 class="col-head">EXPLORE</h4>
+          <div class="col-head-line"></div>
+          <ul class="nav-link-list">
+            <li><a href="#"><span>Properties</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></li>
+            <li><a href="#"><span>Off-Market Listings</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></li>
+            <li><a href="#"><span>New Developments</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></li>
+            <li><a href="#"><span>Sell Your Property</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></li>
+            <li><a href="#"><span>Luxury Collections</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: ABOUT -->
+        <div class="footer-nav-col">
+          <h4 class="col-head">ABOUT</h4>
+          <div class="col-head-line"></div>
+          <ul class="nav-link-list">
+            <li><a href="about.html"><span>About Us</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></li>
+            <li><a href="about.html"><span>Our Story</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></li>
+            <li><a href="#"><span>Our Team</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></li>
+            <li><a href="#"><span>Careers</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></li>
+            <li><a href="#"><span>Press & Media</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: RESOURCES -->
+        <div class="footer-nav-col">
+          <h4 class="col-head">RESOURCES</h4>
+          <div class="col-head-line"></div>
+          <ul class="nav-link-list">
+            <li><a href="#"><span>Market Insights</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></li>
+            <li><a href="#"><span>Buying Guide</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></li>
+            <li><a href="#"><span>Selling Guide</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></li>
+            <li><a href="#"><span>Investors</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></li>
+            <li><a href="#"><span>FAQ</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></li>
+          </ul>
+        </div>
+
+        <!-- Col 5: CONTACT -->
+        <div class="footer-nav-col contact-col">
+          <h4 class="col-head">CONTACT</h4>
+          <div class="col-head-line"></div>
+          <ul class="contact-info-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="contact-icon">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+              </svg>
+              <span>Rua das Ondas, 210<br/>Rio de Janeiro, RJ 22640</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="contact-icon">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              <span>+55 21 0000-0000</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="contact-icon">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+              <span>concierge@oceanora.com</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="contact-icon">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+              <span>Mon &ndash; Sun: 9:00 AM &ndash; 6:00 PM</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Bar Divider & Copyright Row -->
+      <div class="footer-horizontal-divider"></div>
+
+      <div class="footer-bottom-row">
+        <span class="copyright-text">&copy; 2026 OCEANORA. All rights reserved.</span>
+        <div class="bottom-legal-links">
+          <a href="#">Privacy Policy</a>
+          <span class="v-sep">|</span>
+          <a href="#">Terms of Use</a>
+          <span class="v-sep">|</span>
+          <a href="#">Cookies Policy</a>
+        </div>
+        <div class="language-selector">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="globe-icon">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+          <span>English</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="chevron-icon">
+            <path d="M6 9l6 6 6-6"/>
+          </svg>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="app.js?v=3"></script>
+</body>
+</html>
